@@ -27,11 +27,11 @@ Before running any lab pipeline, add the following repository secrets in **Setti
 
 | Secret name | Value |
 |---|---|
-| `SN_INSTANCE_URL` | Your ServiceNow lab instance URL |
-| `SN_CLIENT_ID` | The Client ID from your OAuth Application Registry endpoint |
-| `SN_CLIENT_SECRET` | The Client Secret from your OAuth Application Registry endpoint |
+| `SN_USERNAME` | Your ServiceNow lab pipeline service account username |
+| `SN_PASSWORD` | Your ServiceNow lab pipeline service account password |
+| `SN_INSTANCE_DOMAIN` | Your ServiceNow lab instance domain (for example, `dic-jun-5528-instructor-0001.lab`, no scheme or trailing slash) |
 
-See Lab 1 (Lesson 2) for instructions on creating these secrets.
+See Lab 1 (Lesson 2) for instructions on creating this service account.
 
 ---
 
