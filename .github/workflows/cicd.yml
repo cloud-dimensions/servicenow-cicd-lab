@@ -23,7 +23,7 @@ jobs:
         uses: ServiceNow/sncicd-apply-changes@2.0.0
         continue-on-error: true
         env:
-          nowSourceInstance: ${{ secrets.SN_INSTANCE_DOMAIN }}
+          nowSourceInstance: ${{ vars.SN_INSTANCE_DOMAIN }}
           appScope: x_cd_grc_app
 
       # TODO: Add the ATF test suite step here (Part 1)
