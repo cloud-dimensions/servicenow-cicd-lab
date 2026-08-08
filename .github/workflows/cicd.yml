@@ -29,19 +29,13 @@ jobs:
             echo "::error::SN_INSTANCE_DOMAIN is not set. Add it under Settings, then Secrets and variables, then Actions, on the Variables tab."
             exit 1
           fi
-          # HARDENED 2026-08-07 (LOOP-355) after exercising the failure path found
-          # four real gaps in the first draft. Two changes:
-          #   1. fold to lowercase FIRST - the .service-now.com suffix strip was
-          #      case-sensitive, so a mixed-case paste kept its suffix and the action
-          #      appended a SECOND one, reproducing the exact doubled-name failure
-          #      this whole step exists to prevent;
-          #   2. trim non-alphanumeric wrappers, then validate with a POSITIVE
-          #      ALLOWLIST. The first draft blacklisted / : @ and a trailing dot,
-          #      and a blacklist only rejects what its author thought of - angle
-          #      brackets, quotes and a trailing comma all walked straight through.
-          #      Angle brackets matter especially: the lab text itself writes
-          #      nowlearning-<your-instance-id>.lab, so pasting the placeholder
-          #      verbatim is a likely student action.
+          # This step cleans up whatever you pasted into SN_INSTANCE_DOMAIN: it
+          # lowercases the value, strips a leading https:// or trailing slash, and
+          # removes a trailing .service-now.com if you included it.
+          # It also rejects angle brackets, quotes, and other characters that do not
+          # belong in a hostname - for example, if you paste the placeholder text
+          # nowlearning-<your-instance-id>.lab literally instead of your real
+          # instance name, this step catches that and tells you what to fix.
           INSTANCE=$(printf '%s' "$RAW" \
             | tr -d '[:space:]' \
             | tr '[:upper:]' '[:lower:]' \
