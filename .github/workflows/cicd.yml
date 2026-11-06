@@ -68,6 +68,6 @@ jobs:
           nowSourceInstance: ${{ env.SN_INSTANCE }}
           appScope: x_cd_grc_app
 
-      # TODO: Add the ATF test suite step here (Part 1)
+      # TODO: Addd the ATF test suite step here (Part 1)
 
       # TODO: Add the instance scan step here (Part 2)
